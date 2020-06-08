@@ -1,0 +1,37 @@
+ 
+
+{{errorMsg || successMsg}}
+<form [formGroup]="bookForm" (ngSubmit)="addNewBook()"  >
+    <div class="container-fluid mb-5">        <br>
+        <h1>{{title}}</h1>
+
+        <div class="form-group">
+            <label>Book Name</label>
+            <input [class.is-invalid]="bookForm.get('bookName').invalid &&
+            bookForm.get('bookName').touched " formControlName="bookName" type="text" class="form-control" name="bookName" >    
+            <small [class.d-none]="bookForm.get('bookName').invalid ||
+            bookForm.get('bookName').touched " clas="text-danger">Book name is required</small>
+        </div>
+        
+        <div class="form-group">
+            <label>Author Name</label>
+            <input [class.is-invalid]="bookForm.get('authorName').invalid &&
+            bookForm.get('authorName').touched " formControlName="authorName" formControlName="authorName" type="text" class="form-control" name="authorName" >  
+            <small [class.d-none]="bookForm.get('authorName').invalid ||
+            bookForm.get('authorName').touched " clas="text-danger">Author is required</small>  
+        </div>             
+       
+        <div class="form-group">
+            <label>Quantity</label>
+            <input [class.is-invalid]="bookForm.get('quantity').invalid &&
+            bookForm.get('quantity').touched " formControlName="quantity"  formControlName="quantity" type="text" class="form-control" name="quantity" > 
+            <small [class.d-none]="bookForm.get('quantity').invalid ||
+            bookForm.get('quantity').touched " clas="text-danger">quantity is required</small>     
+        </div>     
+
+        
+        <button [disabled]='!bookForm.valid' type="submit" class="btn btn-primary">Submit</button>
+
+    </div>
+
+  </form> 

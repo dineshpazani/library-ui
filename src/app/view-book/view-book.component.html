@@ -1,0 +1,40 @@
+
+{{errorMsg}}
+ <div class="Table">
+    <div class="Title">
+        <p>Book List</p>
+    </div>
+    <div class="Heading">
+        <div class="Cell">
+            <p>Book Name</p>
+        </div>
+        <div class="Cell">
+            <p>Author Name </p>
+        </div>
+        <div class="Cell">
+            <p>Quantity</p>
+        </div>
+        <div class="Cell">
+            <p>Action</p>
+        </div>
+    </div>
+        
+    <div class="Row" *ngFor="let book of books">
+
+       
+        <div class="Cell">
+            <p> {{ book.bookName }}</p>
+        </div>
+        <div class="Cell">
+            <p> {{ book.authorName }}</p>
+        </div>
+        <div class="Cell">
+            <p> {{ book.quantity }}</p>
+        </div>
+        <div class="Cell">
+            <p>  <button routerLink="/add-book" routerLinkActive="active" (click)="updateBook(book)" type="button">Update</button> </p>
+        </div>
+    </div>
+  
+</div>
+  

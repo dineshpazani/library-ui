@@ -1,0 +1,32 @@
+{{successMsg}}
+{{errorMsg}}
+<br>
+
+<form [formGroup]="registrationForm"  (ngSubmit)="register()"  >
+    <div class="container-fluid mb-5">
+        <h1>User's Book Registration Form</h1>
+
+        <div class="form-group">
+            <label>User Name</label>
+            <input formControlName="username" type="text" class="form-control" name="username" >    
+        </div>
+        
+        <div class="form-group">
+            <label>Issued Date</label>
+            <input formControlName="issueddate" type="text" class="form-control" name="issueddate" >    
+        </div>
+       
+        <div formGroupName="issuedBooks"  class="form-group">
+            <label>Book</label><br>
+            <select (change)="getBookId($event)" formControlName="bookId"  class="form-control" >
+                <option *ngFor="let book of books;"  [value]="book.bookId">
+                   Book id: {{book.bookId}} Book Name: {{book.bookName}}, Author Name:   {{book.authorName}} 
+                </option>
+            </select> 
+        </div>
+
+        
+        <button [disabled]='!registrationForm.valid' type="submit" class="btn btn-primary">Submit</button>
+
+    </div>
+  </form> 

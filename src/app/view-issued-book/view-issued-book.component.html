@@ -1,0 +1,39 @@
+{{errorMsg}}
+
+<div class="Table">
+   <div class="Title">
+       <p>Registration Details </p>
+   </div>
+   <div class="Heading">
+       <div class="Cell">
+           <p>User Name</p>
+       </div>
+       <div class="Cell">
+           <p>Issed Date</p>
+       </div>
+       <div class="Cell">
+           <p>Book Details</p>
+       </div>
+       <div class="Cell">
+           <p>Action</p>
+       </div>
+   </div>
+       
+   <div class="Row" *ngFor="let register of registers  ">
+       <div class="Cell">
+           <p> {{ register.username }}</p>
+       </div>
+       <div class="Cell">
+           <p> {{ register.issueddate }}</p>
+       </div>
+
+       <div class="Cell">
+        <!-- <p> {{ register.issuedBooks | json  }}</p> -->
+       </div>
+       <div class="Cell">
+        <p>  <button routerLink="/register" routerLinkActive="active" (click)="update()" type="button">Update</button> </p>
+      </div>
+   </div>
+   
+ 
+</div>
