@@ -5,9 +5,13 @@
     <div class="container-fluid mb-5">        <br>
         <h1>{{title}}</h1>
 
+        <div class="form-group" hidden>            
+            <input formControlName="bookId" type="text" class="form-control" name="bookId" >  
+        </div>
         <div class="form-group">
             <label>Book Name</label>
-            <input [class.is-invalid]="bookForm.get('bookName').invalid &&
+            <input
+            [class.is-invalid]="bookForm.get('bookName').invalid &&
             bookForm.get('bookName').touched " formControlName="bookName" type="text" class="form-control" name="bookName" >    
             <small [class.d-none]="bookForm.get('bookName').invalid ||
             bookForm.get('bookName').touched " clas="text-danger">Book name is required</small>
@@ -29,6 +33,7 @@
             bookForm.get('quantity').touched " clas="text-danger">quantity is required</small>     
         </div>     
 
+       
         
         <button [disabled]='!bookForm.valid' type="submit" class="btn btn-primary">Submit</button>
 

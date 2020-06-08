@@ -5,7 +5,7 @@ import { Book } from './models/books';
 import { RegisterForm } from './models/RegisterForm';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw'
-import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +22,7 @@ export class BookService {
 
   constructor(private http: HttpClient) { } 
 
-  private _bookMessageSource = new Subject<any>();
+  private _bookMessageSource = new BehaviorSubject('');
   bookMessage$ = this._bookMessageSource.asObservable();
 
   sendBook(bookMsg: string){
