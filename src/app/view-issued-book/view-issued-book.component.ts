@@ -24,8 +24,8 @@ export class ViewIssuedBookComponent implements OnInit {
         }, error => this.errorMsg = error);
   }
 
-  update(){
-    
+  update(value){
+    this._bookservice.sendBook(value);
   }
 
   

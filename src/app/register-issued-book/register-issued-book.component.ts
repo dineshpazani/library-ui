@@ -11,9 +11,14 @@ import { DatePipe } from '@angular/common';
 export class RegisterIssuedBookComponent implements OnInit {
 
  public selectedLevel: any;
+ public books = [];
+ public registerdBook: any;
+ public errorMsg;
+ public successMsg;
 
  date=new Date();
 
+ title  = "Register user's issued book";
 registrationForm = this.fb.group({
     username: [''],
     issueddate: [this.datepipe.transform(this.date, 'yyyy-MM-dd')],
@@ -23,17 +28,26 @@ registrationForm = this.fb.group({
 
 })
 
-  public books = [];
-  public registerdBook: any;
-  public errorMsg;
-  public successMsg;
-
   constructor(private _bookservice: BookService, private fb: FormBuilder, public datepipe: DatePipe) { }
 
   ngOnInit() {
     this._bookservice.getBookDetails()
     .subscribe(data => this.books = data,
                error => this.errorMsg = error);
+               
+    this.updateRegisterInformation();
+  }
+
+  updateRegisterInformation() {
+    this._bookservice.bookMessage$.subscribe((data)=>{
+      if(data){
+        this.registerdBook = data;
+        this.title = "Update Register user's issued book";
+
+        this.registrationForm.get("username").setValue(this.registerdBook.username);
+        this.registrationForm.get("issueddate").setValue(this.registerdBook.issueddate);
+      }     
+    });
   }
 
   showSuccess(){
